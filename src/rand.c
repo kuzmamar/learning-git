@@ -4,7 +4,12 @@
 
 int random_int(int max)
 {
-  return rand() % max;
+  return rand() * max / RAND_MAX;
+}
+
+void init_rand(void)
+{
+  srand(time(NULL));
 }
 
 int main(int argc, char *argv[])
@@ -16,7 +21,7 @@ int main(int argc, char *argv[])
   }
 
   int max = atoi(argv[1]);
-  srand(time(NULL));
+  init_rand();
   int result = random_int(max);
   printf("%d\n", result);
 
